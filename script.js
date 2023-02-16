@@ -2,6 +2,7 @@
 
 // define initial score; decreased through incorrect guesses
 let score = 20;
+let highScore = 0;
 
 // define a secret number for the game; multiply by 20 for 1-20 
 //       Math.trunc to remove decimals 
@@ -21,6 +22,12 @@ document.querySelector('.check').addEventListener('click', function() {
         document.querySelector('.number').textContent = secretNumber; 
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
+
+        if(score > highScore) {
+            highScore = score;
+            document.querySelector('.highscore').textContent = highScore;
+        }
+
     } else if (guess > secretNumber) {
         if (score > 1) {
             document.querySelector('.message').textContent = "Too high...";
